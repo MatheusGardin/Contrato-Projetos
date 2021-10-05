@@ -3,8 +3,8 @@
 namespace App\Interfaces\Repositories\Impl;
 
 use App\Interfaces\Repositories\ContractRepository;
-use App\Models\Contract;
 use Illuminate\Support\Collection;
+use App\Models\Contract;
 
 class ContractRepositoryImpl implements ContractRepository {
 
@@ -14,7 +14,7 @@ class ContractRepositoryImpl implements ContractRepository {
 		$this->modelClass = $modelClass;
 	}
 
-	public function findById(string $id): \stdClass {
+	public function findById(string $id): object {
 		return $this->modelClass->find($id);
 	}
 
@@ -34,7 +34,7 @@ class ContractRepositoryImpl implements ContractRepository {
 		$this->modelClass->find($id)->update($attributes);
 	}
 
-	public function delete(string $id): void {
+	public function destroy(string $id): void {
 		$this->modelClass->find($id)->delete();
 	}
 }

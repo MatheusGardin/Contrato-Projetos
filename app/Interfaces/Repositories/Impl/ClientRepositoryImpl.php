@@ -3,8 +3,8 @@
 namespace App\Interfaces\Repositories\Impl;
 
 use App\Interfaces\Repositories\ClientRepository;
-use App\Models\Client;
 use Illuminate\Support\Collection;
+use App\Models\Client;
 
 class ClientRepositoryImpl implements ClientRepository {
 
@@ -14,7 +14,7 @@ class ClientRepositoryImpl implements ClientRepository {
 		$this->modelClass = $modelClass;
 	}
 
-	public function findById(string $id): \stdClass {
+	public function findById(string $id): object {
 		return $this->modelClass->find($id);
 	}
 
@@ -34,7 +34,7 @@ class ClientRepositoryImpl implements ClientRepository {
 		$this->modelClass->find($id)->update($attributes);
 	}
 
-	public function delete(string $id): void {
+	public function destroy(string $id): void {
 		$this->modelClass->find($id)->delete();
 	}
 }
