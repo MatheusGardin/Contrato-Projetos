@@ -2,8 +2,9 @@
 
 namespace App\Interfaces\Services;
 
-use App\Interfaces\Services\ProjectService;
 use App\Interfaces\Repositories\ProjectRepository;
+use Illuminate\Database\Eloquent\Collection;
+use App\Interfaces\Services\ProjectService;
 
 class ProjectServiceImpl implements ProjectService {
 
@@ -11,6 +12,14 @@ class ProjectServiceImpl implements ProjectService {
 
 	public function __construct(ProjectRepository $repository) {
 		$this->repository = $repository;
+	}
+
+	public function getAll(): Collection {
+		return $this->repository->findAll();
+	}
+
+	public function getProject(string $id): object {
+		return $this->repository->findById($id);
 	}
 
 	public function createProject(array $attributes): void {
